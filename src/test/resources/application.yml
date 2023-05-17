@@ -1,0 +1,12 @@
+spring:
+  h2:
+    console:
+      enabled: 'true'
+  r2dbc:
+    password: rootpassword
+    url: r2dbc:mysql://localhost:3306/todo
+    username: root
+    initialization-mode: always
+
+  profiles:
+    active: test

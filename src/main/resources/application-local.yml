@@ -1,0 +1,18 @@
+spring:
+  r2dbc:
+    password: rootpassword
+    url: r2dbc:mysql://localhost:3306/todo
+    username: root
+    initialization-mode: always
+  liquibase:
+    url: r2dbc:mysql://localhost:3306/todo
+    password: rootpassword
+    user: root
+    change-log: classpath:/db/changelog-root.xml
+
+logging:
+  level:
+    root: DEBUG
+
+server:
+  port: 8082
