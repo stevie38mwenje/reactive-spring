@@ -10,9 +10,17 @@ spring:
     user: root
     change-log: classpath:/db/changelog-root.xml
 
-logging:
-  level:
-    root: DEBUG
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    routingKey: myRoutingKey.#
+    exchange: myTopicExchange
+    queue: myQueue
+
+#logging:
+#  level:
+#    root: DEBUG
 
 server:
   port: 8082

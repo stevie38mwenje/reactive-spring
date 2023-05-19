@@ -27,14 +27,14 @@ public class TodoServiceImpl implements TodoService{
     private final TodoRepository todoRepository;
     private final TeamRepository teamRepository;
     private final UserRepository userRepository;
-    private final ProduceMessageService produceMessageService;
+    private final RabbitMqSender rabbitMqSender;
 
 
-    public TodoServiceImpl(TodoRepository todoRepository, TeamRepository teamRepository, UserRepository userRepository, ProduceMessageService produceMessageService) {
+    public TodoServiceImpl(TodoRepository todoRepository, TeamRepository teamRepository, UserRepository userRepository, RabbitMqSender rabbitMqSender) {
         this.todoRepository = todoRepository;
         this.teamRepository = teamRepository;
         this.userRepository = userRepository;
-        this.produceMessageService = produceMessageService;
+        this.rabbitMqSender = rabbitMqSender;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TodoServiceImpl implements TodoService{
         return todoRepository.save(todo).
                 map(savedTodo ->{
                     log.info("persisted todo: {}",savedTodo);
-                    produceMessageService.produceMessage(String.valueOf(savedTodo));
+                    rabbitMqSender.send(savedTodo);
                     return res;});
     }
     @Override
@@ -98,7 +98,7 @@ public class TodoServiceImpl implements TodoService{
                             map(updatedTodo ->{
                                 var res = GenericResponse.builder().success(true).message("updated todo successfully").status(HttpStatus.OK.value()).data(updatedTodo).build();
                                 log.info("persisted todo: {}",updatedTodo);
-                                produceMessageService.produceMessage(String.valueOf(updatedTodo));
+                                rabbitMqSender.send(updatedTodo);
                                 return res;});
                             });
 
