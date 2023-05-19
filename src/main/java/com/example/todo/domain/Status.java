@@ -8,7 +8,4 @@ import lombok.Getter;
 public enum Status {
     DONE,PENDING;
 
-//    private final Integer value;
-
-
 }

@@ -54,7 +54,6 @@ public class TodoServiceImpl implements TodoService{
                     produceMessageService.produceMessage(String.valueOf(savedTodo));
                     return res;});
     }
-
     @Override
     public Flux<GenericResponse> getTodos() {
         return todoRepository.findAll()
