@@ -61,8 +61,8 @@ class TodoControllerTest {
     @Test
     void getTodos() {
         var todos = List.of(
-                new Todo(1L, "Todo 1", Status.PENDING,2L, LocalDateTime.now(),LocalDateTime.now()),
-                new Todo(2L, "Todo 2", Status.DONE,2L, LocalDateTime.now(),LocalDateTime.now())
+                new Todo(1L, "Todo 1", Status.PENDING,2L, LocalDateTime.now(),LocalDateTime.now(),2L,"CR345"),
+                new Todo(2L, "Todo 2", Status.DONE,2L, LocalDateTime.now(),LocalDateTime.now(),2L,"CR346")
         );
 
         GenericResponse mockResponse = new GenericResponse(todos, "Todos retrieved successfully", true, null);

@@ -10,6 +10,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 public class TodoRequest {
+    //TODO: validations
     private String name;
     private Long assignee;
     private Status status;

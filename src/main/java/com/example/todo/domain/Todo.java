@@ -1,17 +1,15 @@
 package com.example.todo.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
@@ -22,20 +20,23 @@ import java.time.LocalDateTime;
 @Table(name = "todos")
 public class Todo{
     @Id
+    @Column(value = "id")
     private Long id;
-
+    @Column(value = "name")
     private String name;
+    @Column(value = "status")
     private Status status = Status.PENDING;
-    @Column(value = "user_id")
+    @Column(value = "userId")
     private Long assignee;
     @CreatedDate
-    @Column(value = "created_date")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @Column(value = "createdDate")
     private LocalDateTime createdDate;
     @LastModifiedDate
-    @Column(value = "updated_date")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @Column(value = "updatedDate")
     private LocalDateTime updatedDate;
+    @Column(value = "teamId")
+    private Long teamId;
+    @Column(value = "code")
+    private String code;
+
 }

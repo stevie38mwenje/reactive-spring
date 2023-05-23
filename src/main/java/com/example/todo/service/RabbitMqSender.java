@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class RabbitMqSender {
 
-private final RabbitTemplate rabbitTemplate;
+    private final RabbitTemplate rabbitTemplate;
     public RabbitMqSender(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
     public void send(Todo todo) {
+        //TODO: error handling and publish with confirm
         rabbitTemplate.convertAndSend(RabbitMqConfig.EXCHANGE_NAME, "myRoutingKey.messages",
                 todo);
         log.info("Sending message to the exchange : {}",todo);

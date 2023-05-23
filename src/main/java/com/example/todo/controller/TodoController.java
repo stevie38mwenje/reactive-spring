@@ -19,6 +19,10 @@ public class TodoController {
     public Mono<GenericResponse> createTodo(@RequestBody TodoRequest todoRequest){
         return todoService.createTodo(todoRequest);
     }
+    //TODO: apply a filter to fetch all
+    //TODO: return more info about the assignee and team
+    //TODO: on my data use a dto for response->projection
+    //explore return of a mono of list
     @GetMapping("todo/all")
     public Flux<GenericResponse> getTodos(){
         return todoService.getTodos();

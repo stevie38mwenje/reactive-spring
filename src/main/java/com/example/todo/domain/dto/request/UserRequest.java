@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserRequest {
+    //TODO: validations
     private String name;
     private String email;
     private Long teamId;

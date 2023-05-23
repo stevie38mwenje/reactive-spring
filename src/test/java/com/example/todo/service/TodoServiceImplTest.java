@@ -100,7 +100,8 @@ public class TodoServiceImplTest {
     @Test
     void getTodo() {
 
-        var todo = new Todo(1L, "Todo 1", Status.PENDING,2L, LocalDateTime.now(),LocalDateTime.now());
+
+        var todo = new Todo(1L, "Todo 1", Status.PENDING,2L, LocalDateTime.now(),LocalDateTime.now(),2L,"CR345");
 
         GenericResponse resp = GenericResponse.builder().data(todo)
                 .message("Todo fetched successfully").success(true).build();
